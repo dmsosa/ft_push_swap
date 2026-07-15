@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:13:25 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/02 11:15:16 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/14 18:55:30 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,18 @@ char	**ft_split(const char *s, char c);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+/* GET NEXT LINE ------------------------------------------------  */
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+
+char	*get_next_line(int fd);
+int		ft_strlen_chr(char *s, char c);
+void	ft_strcpy_gnl(char *dst, char *src);
+void	ft_clean_buf(char *buf);
+char	*ft_strjoin_gnl(char *prev, char *new);
 
 /* PRINTF ---------------------------------------------------------------  */
 

@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 17:32:43 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/09 20:00:50 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/14 21:37:25 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_reverse(t_stack *stack)
 	stack->tail = new_last;
 	new_last->next = NULL;
 	last->next = stack->head;
+	last->prev = NULL;
+	stack->head->prev = last;
 	stack->head = last;
 }
 

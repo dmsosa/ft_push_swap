@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 13:28:22 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/09 19:58:44 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/14 20:39:58 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,13 @@ typedef struct s_stack
 
 //ERRORS
 int			ft_return_error(int print);
-int			ft_exit_error(int code);
+void		ft_exit_error(int code);
 
 //PARSE UTILS
+
+char		**split_arguments(int argc, char **argv);
 int			ft_valid_args(char **argv_split);
-int			ft_parse_pushswap(t_stack **a, char **argv_split);
+int			ft_parse_pushswap(t_stack **a, t_stack **b, char **argv_split);
 int			ft_parse_flags(t_stack *a, char **split);
 int			ft_parse_integers(t_stack *a, char **split);
 char		*ft_strjoin_args(int argc, char **argv);
@@ -88,7 +90,7 @@ long		ft_atol(char *str);
 
 //STACK UTILS
 t_node		*ft_node_new(int value);
-t_stack		*ft_stack_new(int create_ops);
+t_stack		*ft_stack_new(int *ops);
 void		ft_free_stack(t_stack *stack);
 void		ft_print_stack(t_stack *stack);
 void		ft_stack_index(t_stack **stack);
@@ -98,7 +100,7 @@ t_node		*ft_stacklast(t_stack *stack);
 void		ft_stack_setstrategies(t_stack *a, char *s1, char *s2);
 void		ft_stack_setnames(t_stack *a, char *s1, char *s2);
 int			ft_stack_init(t_stack *stack);
-void		ft_stack_init_numbers(t_stack *a, int *numbers, int size);
+void		ft_stack_add_numbers(t_stack *a, int *numbers, int size);
 void		ft_stackadd_back(t_stack *stack, t_node *node);
 void		ft_stackadd_front(t_stack *stack, t_node *node);
 int			stack_find_index(t_stack *stack, int index);

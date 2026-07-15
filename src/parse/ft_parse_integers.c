@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/20 17:59:26 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/09 20:00:19 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/14 15:38:24 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,6 @@ int	ft_parse_integers(t_stack *a, char **split)
 	}
 	if (ft_duplicated(numbers, size))
 		return (free(numbers), 0);
-	ft_stack_init_numbers(a, numbers, size);
+	ft_stack_add_numbers(a, numbers, size);
 	return (free(numbers), 1);
 }

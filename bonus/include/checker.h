@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/29 21:15:12 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/10 12:58:59 by durisosa         ###   ########.fr       */
+/*   Created: 2023/01/12 18:42:53 by handler           #+#    #+#             */
+/*   Updated: 2026/07/14 20:01:26 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef CHECKER_H
+# define CHECKER_H
 
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	i;
+# include "push_swap.h"
 
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
-}
+void	do_op(char *str, t_stack *a, t_stack *b);
+void	exit_error(void);
+void	ft_read_instructions(t_stack *a, t_stack *b);
+
+#endif

@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/24 17:29:35 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/09 19:18:23 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/15 14:50:59 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ complexity name,
 and calculates disorder, which is going to be used by the
 ft_sort function.
 */
-int	ft_parse_pushswap(t_stack **a, char **split)
+int	ft_parse_pushswap(t_stack **a, t_stack **b, char **split)
 {
-	*a = ft_stack_new(1);
+	*a = ft_stack_new(NULL);
+	*b = ft_stack_new((*a)->ops);
 	if (!*a)
 		return (0);
 	if (!ft_parse_flags(*a, split))
@@ -43,4 +44,19 @@ int	ft_parse_pushswap(t_stack **a, char **split)
 		return (0);
 	assign_indexes(*a);
 	return (1);
+}
+
+char	**split_arguments(int argc, char **argv)
+{
+	char	*argv_str;
+	char	**argv_split;
+
+	argv_str = ft_strjoin_args(argc, argv);
+	if (!argv_str)
+		ft_exit_error(1);
+	argv_split = ft_split(argv_str, ' ');
+	free(argv_str);
+	if (!argv_split)
+		return (ft_exit_error(1), NULL);
+	return (argv_split);
 }

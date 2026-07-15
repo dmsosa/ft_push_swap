@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 16:50:20 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/09 19:03:39 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/15 14:53:04 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,31 @@ static void	ft_chunks_to_a(t_stack *a, t_stack *b, int chunk)
 
 static void	ft_chunks_to_b(t_stack *a, t_stack *b, int pivot, int chunk)
 {
-	while (b->size < pivot + chunk)
+	t_node	*tmp_a;
+	int		pos_top;
+	int		pos_bot;
+
+	while (b->size < pivot + chunk && a->size > 0)
 	{
+		tmp_a = a->head;
+		pos_top = 0;
+		pos_bot = 0;
+		while (tmp_a && !(tmp_a->index < pivot + chunk))
+		{
+			pos_top++;
+			tmp_a = tmp_a->next;
+		}
+		tmp_a = a->tail;
+		while (tmp_a && !(tmp_a->index < pivot + chunk))
+		{
+			pos_bot++;
+			tmp_a = tmp_a->prev;
+		}
 		if (a->head->index < pivot + chunk)
 			ft_pb(a, b);
 		else
 			ft_ra(a);
-		if (b->size > 1 && b->head->index <= (pivot + chunk / 2)
-			&& b->head->index > pivot)
+		if (b->size > 1 && b->head->index <= pivot + (chunk / 2))
 			ft_rb(b);
 	}
 }
@@ -48,14 +65,20 @@ void	ft_sort_medium(t_stack *a, t_stack *b)
 {
 	int	pivot;
 	int	chunk;
+	int	total_size;
 
+	total_size = a->size;
 	pivot = 0;
 	chunk = int_sqrt(a->size) + 1;
-	while (a->size > 3)
+	while (a->size > 0)
 	{
 		ft_chunks_to_b(a, b, pivot, chunk);
+		if (pivot + chunk > total_size)
+			chunk = total_size - pivot;
 		pivot += chunk;
 	}
-	ft_sort_three(a);
-	ft_chunks_to_a(a, b, chunk);
+	while (b->size > 0)
+	{
+		ft_pa(a, b);
+	}
 }

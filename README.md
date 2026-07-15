@@ -51,6 +51,10 @@ d. Investigating which smaller skills were needed to successfully understand thi
 As a suggestion, use this valgrind full command to help you during troubleshooting leaks in your program:
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./executable
 
+### Bonus part
+
+Bonus: The bonus consists of compiling a separate main for the checker program. Unlike push_swap, it doesn't print the list of operations. Instead, it reads instructions from standard input and executes them. This allows us to pipe the output of push_swap directly into checker, which will replay the operations and verify whether the stack is correctly sorted.
+
 
 ### Testing
 
@@ -68,3 +72,40 @@ Because after contemplating possible pros and cons, it was clear enough to work 
 |                                                                                                                                                                        |                                                                                                                                           |
 
 Tables made with [tables generator](https://tablesgenerator.com/markdown_tables#)
+
+### Why you have chosen the algorithms you did?
+
+We had the following options:
+
+Algoritmo simple (O(n
+2
+)):
+Implementa al menos un algoritmo base perteneciente a la clase de complejidad
+O(n
+2
+). Por ejemplo:
+• Adaptación del orden por inserción
+• Adaptación del orden por selección
+• Adaptación del orden burbuja
+• Métodos simples de extracción del mínimo/máximo
+2. Algoritmo intermedio (O(n
+√
+n)):
+Implementa al menos un algoritmo perteneciente a la clase de complejidad O(n
+√
+n).
+Por ejemplo:
+• Orden basado en chunks (dividiendo en √
+n chunks)
+• Métodos de partición basados en bloques
+• Adaptaciones del orden por buckets con √
+n buckets
+• Estrategias de orden basadas en rangos
+3. Algoritmo complejo (O(n log n)):
+Implementa al menos un algoritmo perteneciente a la clase de complejidad O(n log n).
+Por ejemplo:
+• Adaptación del orden radix (LSD o MSD)
+• Adaptación del orden por fusión utilizando dos stacks
+• Adaptación del orden rápido con partición por stacks
+• Adaptación del orden por montículos
+• Algoritmos de árbol binario indexado

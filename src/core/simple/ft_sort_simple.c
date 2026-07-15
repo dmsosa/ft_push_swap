@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/27 17:45:39 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/09 16:49:25 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/15 15:02:01 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ static void	ft_from_b_to_a(t_stack *a, t_stack *b)
 
 	while (b->size > 0)
 	{
-		update_targets_b(a, b);
 		update_positions(a);
 		update_positions(b);
+		update_targets_b(a, b);
 		update_costs(b, a);
 		cheapest = find_cheapest(b);
 		rotate_both(b, a, cheapest);
@@ -94,25 +94,96 @@ Before each push, we calculate:
 4. Push all elements back to A.
 5. If minimum of A is not on top, move it to the top.
 */
-void	ft_sort_simple(t_stack *a, t_stack *b)
+t_node	*find_lowest_cost(t_stack *stack)
+{
+	t_node	*node;
+	t_node	*best;
+
+	if (!stack || !stack->top)
+		return (NULL);
+	best = stack->top;
+	node = best->next;
+	while (node)
+	{
+		if (node->cost < best->cost)
+			best = node;
+		node = node->next;
+	}
+	return (best);
+}
+
+void	find_cheapest(t_stack *stack)
+{
+	t_node	*node;
+	t_node	*best;
+
+	best = find_lowest_cost(stack);
+	node = stack->top;
+	while (node)
+	{
+		node->cheapest = (node == best);
+		node = node->next;
+	}
+}
+
+void	move_b_to_a(t_stack *a, t_stack *b)
 {
 	t_node	*cheapest;
+	t_node	*target;
 
-	ft_pb(a, b);
-	ft_pb(a, b);
+	cheapest = find_lowest_cost(b);
+	target = cheapest->target;
+	if (cheapest->above_median && target->above_median)
+		rotate_both(a, b, target, cheapest);
+	else if (!cheapest->above_median && !target->above_median)
+		reverse_rotate_both(a, b, target, cheapest);
+	bring_to_top(a, target);
+	bring_to_top(b, cheapest);
+	pa(a, b);
+}
+
+void	move_a_to_b(t_stack *a, t_stack *b)
+{
+	t_node	*cheapest;
+	t_node	*target;
+
+	cheapest = find_lowest_cost(a);
+	target = cheapest->target;
+	if (cheapest->above_median && target->above_median)
+		rotate_both(a, b, cheapest, target);
+	else if (!cheapest->above_median && !target->above_median)
+		reverse_rotate_both(a, b, cheapest, target);
+	bring_to_top(a, cheapest);
+	bring_to_top(b, target);
+	pb(a, b);
+}
+
+static void	final_rotation(t_stack *a)
+{
+	t_node	*min;
+
+	min = find_min(a);
+	if (min)
+		bring_to_top(a, min);
+}
+
+void	sort_turk(t_stack *a, t_stack *b)
+{
+	if (a->size > 3)
+		pb(a, b);
+	if (a->size > 3)
+		pb(a, b);
 	while (a->size > 3)
 	{
-		update_targets_a(a, b);
-		update_positions(a);
-		update_positions(b);
-		update_costs(a, b);
-		cheapest = find_cheapest(a);
-		rotate_both(a, b, cheapest);
-		finish_rotation(a, cheapest, 'a');
-		finish_rotation(b, cheapest->target, 'b');
-		ft_pb(a, b);
+		update_metadata_a_to_b(a, b);
+		move_a_to_b(a, b);
 	}
-	ft_sort_three(a);
-	ft_from_b_to_a(a, b);
+	sort_three(a);
+	while (b->size)
+	{
+		update_metadata_b_to_a(a, b);
+		move_b_to_a(a, b);
+	}
+	update_positions(a);
 	stack_index_to_top(a, 0, 'a');
 }

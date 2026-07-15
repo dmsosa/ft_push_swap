@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/29 21:15:12 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/10 12:58:59 by durisosa         ###   ########.fr       */
+/*   Created: 2026/07/13 16:22:10 by durisosa          #+#    #+#             */
+/*   Updated: 2026/07/14 17:57:34 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "checker.h"
 
-int	ft_strcmp(char *s1, char *s2)
+void	exit_error(void)
 {
-	int	i;
-
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
+	write(2, "KO\n", 3);
+	exit(1);
 }

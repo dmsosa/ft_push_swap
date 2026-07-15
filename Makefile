@@ -1,8 +1,10 @@
+AR = ar -rcs
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra
 RM = rm -rf
 INCLUDE = -Iinclude -Ilib
 NAME = push_swap.out
+PUSHSWAP_LIB = push_swap.a
 LIBFT_DIR = ./lib
 LIBFT = $(LIBFT_DIR)/libft.a
 SRC_DIR = src
@@ -44,6 +46,8 @@ tests/test_strcmp.c \
 tests/test_parser.c \
 tests/test_sort.c \
 
+
+
 OFILES = $(CFILES:%.c=%.o)
 
 SRCS = $(addprefix $(SRC_DIR)/, $(CFILES))
@@ -54,13 +58,19 @@ all: $(NAME)
 
 $(OBJS_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	$(CC) $(FLAGS) $(INCLUDE) -L./lib -lft -c $^ -o $@
+	$(CC) $(FLAGS) $(INCLUDE) $^ -L./lib -lft -c -o $@
+
+$(PUSHSWAP_LIB) : $(OBJS)
+	$(AR) $(PUSHSWAP_LIB) $^
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
-$(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(FLAGS) -g $(OBJS) $(LIBFT) $(INCLUDE) -o $@ 
+$(NAME): $(PUSHSWAP_LIB) $(LIBFT)
+	$(CC) $(FLAGS) $(INCLUDE) $(PUSHSWAP_LIB) $(LIBFT) -o $@ 
+
+bonus: $(BONUS_OBJS)
+	$(CC) $(FLAGS) $(INCLUDE) -I./bonus $(OBJS) $^ -L./lib -lft -o $(CHECKER)
 
 clean:
 	@make -C $(LIBFT_DIR) clean
@@ -68,8 +78,9 @@ clean:
 
 fclean: clean
 	@make -C $(LIBFT_DIR) fclean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(CHECKER)
 
 re: fclean all
 
 .PHONY: all bonus clean fclean re libft
+
