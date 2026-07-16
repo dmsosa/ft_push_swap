@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 13:54:24 by durisosa          #+#    #+#             */
-/*   Updated: 2026/06/23 13:44:19 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/16 20:16:49 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_printc(int c, t_context *ctx)
 {
-	if (write(1, (char *) &c, 1) == -1)
+	if (write(ctx->fd, (char *) &c, 1) == -1)
 		ctx->written = -1;
 	if (ctx->written != -1)
 		ctx->written += 1;

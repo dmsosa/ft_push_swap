@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/02 19:49:15 by emmmilla          #+#    #+#             */
-/*   Updated: 2026/07/06 16:08:45 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/15 15:09:34 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_node	*find_smallest_bigger(t_stack *stack, int value)
 	return (best);
 }
 
-static t_node	*find_min(t_stack *stack)
+static t_node	*find_min_value(t_stack *stack)
 {
 	t_node	*node;
 	t_node	*min;
@@ -49,11 +49,6 @@ static t_node	*find_min(t_stack *stack)
 	return (min);
 }
 
-/*
-When ordering from smallest to biggest, target needs to be
-next lowest bigger number of to_push.
-this can also be called (update_targets_ascending);
-*/
 void	update_targets_b(t_stack *a, t_stack *b)
 {
 	t_node	*node;
@@ -63,7 +58,7 @@ void	update_targets_b(t_stack *a, t_stack *b)
 	{
 		node->target = find_smallest_bigger(a, node->value);
 		if (!node->target)
-			node->target = find_min(a);
+			node->target = find_min_value(a);
 		node = node->next;
 	}
 }

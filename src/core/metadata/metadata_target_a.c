@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/02 19:49:15 by emmmilla          #+#    #+#             */
-/*   Updated: 2026/07/06 16:08:05 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/16 15:27:05 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_node	*find_biggest_smaller(t_stack *stack, int value)
 	return (best);
 }
 
-static t_node	*find_max(t_stack *stack)
+static t_node	*find_max_value(t_stack *stack)
 {
 	t_node	*node;
 	t_node	*max;
@@ -49,11 +49,6 @@ static t_node	*find_max(t_stack *stack)
 	return (max);
 }
 
-/*
-When ordering from biggest to smallest, target needs to be
-next lowest number of to_push.
-this can also be called (update_targets_descending);
-*/
 void	update_targets_a(t_stack *a, t_stack *b)
 {
 	t_node	*node;
@@ -63,7 +58,22 @@ void	update_targets_a(t_stack *a, t_stack *b)
 	{
 		node->target = find_biggest_smaller(b, node->value);
 		if (!node->target)
-			node->target = find_max(b);
+			node->target = find_max_value(b);
 		node = node->next;
 	}
 }
+
+/**
+ * Propuesta Durian
+ * No es suficiente con encontrar biggest smaller,
+ * in order to corretly find the correct position
+ * Is necessary to check also that the number to push
+ * satisfies the following condition: 
+ * a->head->value > b->head->value && 
+ * a->head->value < b->tail->value
+ * 
+ * OR
+ * 
+ * a->head->value > b->head->value && 
+ * a->head->value < b->next->value (in this case return pos + 1);
+ */

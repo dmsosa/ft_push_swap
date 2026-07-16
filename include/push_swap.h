@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 13:28:22 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/14 20:39:58 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/16 18:58:12 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ typedef struct s_stack
 	int			*ops;
 }	t_stack;
 
-
 //ERRORS
 int			ft_return_error(int print);
 void		ft_exit_error(int code);
@@ -123,22 +122,51 @@ void		ft_sort_simple(t_stack *a, t_stack *b);
 
 //SORT MEDIUM
 void		ft_sort_medium(t_stack *a, t_stack *b);
+int			stack_has_index_in_range(t_stack *stack, int start, int end);
 
 //SORT COMPLEX
 void		ft_sort_complex(t_stack *a, t_stack *b);
 
-////SORT SIMPLE - METADATA
-t_node		*find_cheapest(t_stack *stack);
+/* ************************************************************************** */
+/* METADATA                                                                  */
+/* ************************************************************************** */
+
+void		sort_two(t_stack *a);
+void		sort_three(t_stack *a);
+t_node		*find_min(t_stack *stack);
+void		sort_four_five(t_stack *a, t_stack *b);
+
+void		bring_to_top(t_stack *stack, t_node *top_node, char name);
+void		move_a_to_b(t_stack *a, t_stack *b);
+void		move_b_to_a(t_stack *a, t_stack *b);
+void		rotate_to_top(t_stack *stack, t_node *top_node, char name);
+void		reverse_rotate_to_top(t_stack *stack, t_node *top_node, char name);
+void		rotate_both(t_stack *a, t_stack *b, t_node *top_a,
+				t_node *top_b);
+void		reverse_rotate_both(t_stack *a, t_stack *b, t_node *top_a,
+				t_node *top_b);
+void		rotate_pos_top(t_stack *stack, int pos, char name);
+
+/* ************************************************************************** */
+/* METADATA                                                                   */
+/* ************************************************************************** */
+
+void		assign_indexes(t_stack *stack);
 void		update_positions(t_stack *stack);
 void		update_targets_a(t_stack *a, t_stack *b);
 void		update_targets_b(t_stack *a, t_stack *b);
-void		assign_indexes(t_stack *stack);
-void		update_costs(t_stack *a, t_stack *b);
+void		update_costs_a(t_stack *a, t_stack *b);
+void		update_costs_b(t_stack *a, t_stack *b);
+void		find_cheapest(t_stack *stack);
+t_node		*find_lowest_cost(t_stack *stack);
+void		update_metadata_a_to_b(t_stack *a, t_stack *b);
+void		update_metadata_b_to_a(t_stack *a, t_stack *b);
 
 //SORT UTILS
 int			ft_max_index(t_stack *stack);
 int			ft_min_index(t_stack *stack);
-void		rotate_to_top(t_stack *stack, t_node *target, char name);
+t_node		*find_max(t_stack *stack);
+int			find_max_pos(t_stack *stack);
 int			int_sqrt(int n);
 
 //OPERATIONS

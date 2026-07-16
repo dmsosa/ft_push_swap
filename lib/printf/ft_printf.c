@@ -6,11 +6,16 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:21:41 by durisosa          #+#    #+#             */
-/*   Updated: 2026/06/23 13:44:13 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/16 20:20:14 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
+
+static void	change_fd(int fd, t_context *ctx)
+{
+	ctx->fd = fd;
+}
 
 static void	ft_types(char c, t_flags *flags, t_context *ctx)
 {
@@ -30,8 +35,8 @@ static void	ft_types(char c, t_flags *flags, t_context *ctx)
 		ft_printhex(va_arg(ctx->va, unsigned int), 1, flags, ctx);
 	else if (c == '%')
 		ft_printc(c, ctx);
-	else if (c == 'm')
-		ft_printstr("success", ctx);
+	else if (c == 't')
+		change_fd(va_arg(ctx->va, int), ctx);
 }
 
 static t_flags	*ft_parse_flags(const char **format, t_flags *flags,
@@ -102,6 +107,7 @@ int	ft_printf(const char	*format, ...)
 		return (-1);
 	va_start(ctx->va, format);
 	ctx->written = 0;
+	ctx->fd = 1;
 	ctx->written = ft_process_format(format, ctx);
 	va_end(ctx->va);
 	done = ctx->written;

@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 15:40:49 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/14 21:39:16 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/16 19:00:18 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	free_all(char **argv_split, t_stack *a, t_stack *b)
 	ft_free_split(argv_split);
 	ft_free_stack(a);
 	b->ops = NULL;
+	free(b->ops);
 	ft_free_stack(b);
 }
 

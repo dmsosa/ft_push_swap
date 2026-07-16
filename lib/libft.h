@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 14:13:25 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/14 18:55:30 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/16 20:15:31 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ char	*ft_strjoin_gnl(char *prev, char *new);
 typedef struct s_context
 {
 	int			written;
+	int			fd;
 	va_list		va;
 }	t_context;
 

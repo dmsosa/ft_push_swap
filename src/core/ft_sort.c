@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/20 18:04:59 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/13 19:02:55 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/16 19:04:05 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static void	run_strategy(t_stack **a, t_stack **b)
 {
-	*b = ft_stack_new((*a)->ops);
-	(*b)->bench = (*a)->bench;
 	if ((*a)->size <= 5)
 		ft_sort_units(*a, *b);
 	else if ((*a)->strategy_used == STRAT_SIMPLE)

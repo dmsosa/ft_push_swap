@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/02 18:14:30 by emmmilla          #+#    #+#             */
-/*   Updated: 2026/07/09 14:45:56 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/16 14:51:53 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,8 @@ void	update_positions(t_stack *stack)
 	position = 0;
 	while (node)
 	{
-		node->above_median = (position < stack->size / 2);
-		if (node->above_median)
-			node->position = position;
-		else
-			node->position = stack->size - node->position;
+		node->position = position;
+		node->above_median = (position <= (stack->size) / 2);
 		position++;
 		node = node->next;
 	}

@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bench_utils.c                                   :+:      :+:    :+:   */
+/*   algorithm_turk.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/29 13:34:41 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/09 19:59:05 by durisosa         ###   ########.fr       */
+/*   Created: 2026/07/13 09:37:10 by emmmilla          #+#    #+#             */
+/*   Updated: 2026/07/16 14:55:18 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_putdisorder_fd(double disorder, int fd)
+static void	final_rotation(t_stack *a)
 {
-	int	disorder_100;
+	t_node	*min;
 
-	disorder_100 = (int)(disorder * 100 + 0.5);
-	if (disorder_100 >= 100)
-	{
-		ft_putstr_fd("100.00%", fd);
-		return ;
-	}
-	ft_putnbr_fd(disorder_100, fd);
-	ft_putstr_fd(".00%", fd);
+	min = find_min(a);
+	if (min)
+		bring_to_top(a, min, 'a');
 }
 
-void	ft_pulabel_fd(const char *label, int number, int fd)
+void	ft_sort_simple(t_stack *a, t_stack *b)
 {
-	ft_putstr_fd((char *)label, fd);
-	ft_putnbr_fd(number, fd);
+	ft_pb(a, b);
+	ft_pb(a, b);
+	while (a->size > 3)
+	{
+		update_metadata_a_to_b(a, b);
+		move_a_to_b(a, b);
+	}
+	ft_sort_three(a);
+	while (b->size)
+	{
+		update_metadata_b_to_a(a, b);
+		move_b_to_a(a, b);
+	}
+	final_rotation(a);
 }

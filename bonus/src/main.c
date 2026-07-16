@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 16:22:10 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/14 20:40:31 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/15 21:42:46 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,21 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-
-
 void	ft_read_instructions(t_stack *a, t_stack *b)
 {
+	int		op_count;
 	char	*line;
 
+	op_count = 0;
 	line = get_next_line(0);
 	while (line != NULL)
 	{
 		if (!ft_do_op(line, a, b))
 			exit_error();
 		free(line);
+		op_count++;
+		if (op_count == a->ops[OP_TOTAL])
+			break ;
 		line = get_next_line(0);
 	}
 }

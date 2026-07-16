@@ -1,10 +1,11 @@
 AR = ar -rcs
 CC = gcc
-CFLAGS = -g -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf
 INCLUDE = -Iinclude -Ilib
-NAME = push_swap.out
+NAME = push_swap
 PUSHSWAP_LIB = push_swap.a
+BONUS_DIR = ./bonus
 LIBFT_DIR = ./lib
 LIBFT = $(LIBFT_DIR)/libft.a
 SRC_DIR = src
@@ -15,14 +16,19 @@ CFILES = main.c \
 	core/ft_sort.c \
 	core/ft_sort_utils.c \
 	core/ft_sort_units.c \
-	core/simple/ft_sort_simple.c \
+	core/simple/algorithm_move.c\
+	core/simple/algorithm_move_utils.c\
+	core/simple/algorithm_small_utils.c\
+	core/simple/algorithm_turk.c\
 	core/medium/ft_sort_medium.c \
+	core/medium/ft_sort_medium_utils.c \
 	core/metadata/metadata_cheapest.c \
 	core/metadata/metadata_cost.c \
 	core/metadata/metadata_index.c \
 	core/metadata/metadata_position.c \
 	core/metadata/metadata_target_a.c \
 	core/metadata/metadata_target_b.c \
+	core/metadata/metadata.c \
 	operations/push/ft_push.c \
 	operations/rotate/ft_rotate.c \
 	operations/swap/ft_swap.c \
@@ -74,11 +80,13 @@ bonus: $(BONUS_OBJS)
 
 clean:
 	@make -C $(LIBFT_DIR) clean
+	@make -C $(BONUS_DIR) fclean
 	$(RM) $(OBJS_DIR)
 
 fclean: clean
 	@make -C $(LIBFT_DIR) fclean
-	$(RM) $(NAME) $(CHECKER)
+	@make -C $(BONUS_DIR) fclean
+	$(RM) $(NAME) $(CHECKER) $(PUSHSWAP_LIB)
 
 re: fclean all
 

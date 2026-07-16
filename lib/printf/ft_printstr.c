@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:21:41 by durisosa          #+#    #+#             */
-/*   Updated: 2026/06/23 13:55:28 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/16 20:17:35 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_printstr(char *str, t_context *ctx)
 
 	if (!str)
 	{
-		if (write(1, NULL_PTR, 6) == -1)
+		if (write(ctx->fd, NULL_PTR, 6) == -1)
 		{
 			ctx->written = -1;
 			return ;
