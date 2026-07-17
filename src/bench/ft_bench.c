@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 13:34:02 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/16 20:55:15 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/17 13:14:08 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void	ft_print_bench(t_stack *a)
 	if (!a)
 		return ;
 	ft_putstr_fd("[bench] disorder: ", 2);
-	printf("iorder is %f\n\n", a->disorder);
 	ft_print_disorder(a->disorder, 2);
 	ft_putstr_fd("\n[bench] strategy: ", 2);
 	ft_print_strategy(a, 2);

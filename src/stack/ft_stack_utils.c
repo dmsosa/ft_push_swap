@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 19:21:41 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/16 20:18:59 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/17 13:39:51 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_stacksorted(t_stack *stack)
 	tmp = stack->head;
 	while (tmp && tmp->next)
 	{
-		if (tmp->index > tmp->next->index)
+		if (tmp->value > tmp->next->value)
 			return (0);
 		tmp = tmp->next;
 	}

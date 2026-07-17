@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 15:55:03 by emmmilla          #+#    #+#             */
-/*   Updated: 2026/07/15 20:48:30 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/17 13:36:53 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,35 @@ void	rotate_pos_top(t_stack *stack, int pos, char name)
 {
 	if (!stack || pos < 0 || pos >= stack->size)
 		return ;
+	if (pos <= stack->size / 2)
+	{
+		while (pos)
+		{
+			if (name == 'a')
+				ft_ra(stack);
+			else
+				ft_rb(stack);
+			pos--;
+		}
+	}
+	else
+	{
+		while (pos < stack->size)
+		{
+			if (name == 'a')
+				ft_rra(stack);
+			else
+				ft_rrb(stack);
+			pos++;
+		}
+	}
+}
+
+void	rotate_index_top(t_stack *stack, int index, char name)
+{
+	int	pos;
+
+	pos = stack_find_index(stack, index);
 	if (pos <= stack->size / 2)
 	{
 		while (pos)

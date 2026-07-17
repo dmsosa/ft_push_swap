@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 13:28:22 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/16 18:58:12 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/17 18:02:08 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,8 @@ void		ft_sort_simple(t_stack *a, t_stack *b);
 
 //SORT MEDIUM
 void		ft_sort_medium(t_stack *a, t_stack *b);
-int			stack_has_index_in_range(t_stack *stack, int start, int end);
+int			stack_has_range(t_stack *stack, int start, int end);
+int			next_chunk_pos(t_stack *stack, int pivot, int chunk);
 
 //SORT COMPLEX
 void		ft_sort_complex(t_stack *a, t_stack *b);
@@ -146,6 +147,7 @@ void		rotate_both(t_stack *a, t_stack *b, t_node *top_a,
 void		reverse_rotate_both(t_stack *a, t_stack *b, t_node *top_a,
 				t_node *top_b);
 void		rotate_pos_top(t_stack *stack, int pos, char name);
+void		rotate_index_top(t_stack *stack, int index, char name);
 
 /* ************************************************************************** */
 /* METADATA                                                                   */
