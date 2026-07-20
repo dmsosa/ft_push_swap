@@ -16,12 +16,9 @@ CFILES = main.c \
 	core/ft_sort.c \
 	core/ft_sort_utils.c \
 	core/ft_sort_units.c \
-	core/simple/algorithm_move.c\
-	core/simple/algorithm_move_utils.c\
-	core/simple/algorithm_small_utils.c\
-	core/simple/algorithm_turk.c\
-	core/medium/ft_sort_medium.c \
-	core/medium/ft_sort_medium_utils.c \
+	core/algorithm_move.c\
+	core/algorithm_move_utils.c\
+	core/algorithm_small_utils.c\
 	core/metadata/metadata_cheapest.c \
 	core/metadata/metadata_cost.c \
 	core/metadata/metadata_index.c \
@@ -29,6 +26,11 @@ CFILES = main.c \
 	core/metadata/metadata_target_a.c \
 	core/metadata/metadata_target_b.c \
 	core/metadata/metadata.c \
+	core/complex/sort_radix.c\
+	core/medium/sort_chunk_utils.c\
+	core/medium/sort_chunk.c\
+	core/simple/sort_insertion.c\
+	core/simple/sort_turk.c\
 	operations/push/ft_push.c \
 	operations/rotate/ft_rotate.c \
 	operations/swap/ft_swap.c \
@@ -43,7 +45,6 @@ CFILES = main.c \
 	stack/ft_stack_utils.c \
 	stack/ft_stack_print.c \
 	bench/ft_bench.c \
-	bench/ft_bench_utils.c \
 	errors/ft_errors.c
 
 TESTFILES = tests/test_disorder.c \

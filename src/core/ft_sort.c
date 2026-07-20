@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/20 18:04:59 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/17 13:19:37 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/17 14:59:35 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static void	run_strategy(t_stack **a, t_stack **b)
 	if ((*a)->size <= 5)
 		ft_sort_units(*a, *b);
 	else if ((*a)->strategy_used == STRAT_SIMPLE)
-		ft_sort_simple(*a, *b);
+		sort_turk(*a, *b);
 	else if ((*a)->strategy_used == STRAT_MEDIUM)
-		ft_sort_medium(*a, *b);
+		sort_chunk(*a, *b);
 	else
-		ft_sort_simple(*a, *b);
+		sort_radix(*a, *b);
 }
 
 static t_strategy	ft_adaptive_choice(t_stack *a)

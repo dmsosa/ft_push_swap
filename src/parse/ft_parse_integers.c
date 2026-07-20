@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/20 17:59:26 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/14 15:38:24 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/17 14:51:19 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	ft_count_istrs(char **split);
 static int	ft_numbers_append(int *numbers, int size, int *index, char *str);
-static int	ft_contains_value(int *numbers, int size, int value);
 
 static int	ft_duplicated(int *numbers, int size)
 {
@@ -46,22 +45,6 @@ static int	ft_numbers_append(int *numbers, int size, int *index, char *str)
 	numbers[*index] = value;
 	*index = *index + 1;
 	return (1);
-}
-
-static int	ft_contains_value(int *numbers, int size, int value)
-{
-	int	i;
-
-	if (!numbers)
-		return (0);
-	i = 0;
-	while (i < size)
-	{
-		if (numbers[i] == value)
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 static int	ft_count_istrs(char **split)

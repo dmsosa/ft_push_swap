@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 20:46:08 by emmmilla          #+#    #+#             */
-/*   Updated: 2026/07/15 20:46:40 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/17 14:39:59 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_node	*find_min(t_stack *stack)
 	return (min);
 }
 
-static void	move_min_to_top(t_stack *a)
+void	move_min_to_top(t_stack *a)
 {
 	t_node	*min;
 	int		rotations;

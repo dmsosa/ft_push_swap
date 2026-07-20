@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_simple.c                                   :+:      :+:    :+:   */
+/*   sort_turk.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 09:37:10 by emmmilla          #+#    #+#             */
-/*   Updated: 2026/07/17 13:19:45 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/17 14:55:47 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	final_rotation(t_stack *a)
+void	sort_turk(t_stack *a, t_stack *b)
 {
-	t_node	*min;
-
-	min = find_min(a);
-	if (min)
-		bring_to_top(a, min, 'a');
-}
-
-void	ft_sort_simple(t_stack *a, t_stack *b)
-{
-	ft_pb(a, b);
-	ft_pb(a, b);
+	if (a->size > 3)
+		ft_pb(a, b);
+	if (a->size > 3)
+		ft_pb(a, b);
 	while (a->size > 3)
 	{
 		update_metadata_a_to_b(a, b);

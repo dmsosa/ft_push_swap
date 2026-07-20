@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/29 11:36:34 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/16 18:53:04 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/17 14:53:45 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_node	*ft_node_new(int value)
 	return (node);
 }
 
-t_stack	*ft_stack_new(int *ops)
+t_stack	*ft_stack_new(char name, int *ops)
 {
 	int		i;
 	t_stack	*stack;
@@ -36,6 +36,7 @@ t_stack	*ft_stack_new(int *ops)
 		return (NULL);
 	stack->strategy_arg = STRAT_ADAPTIVE;
 	stack->strategy_used = STRAT_ADAPTIVE;
+	stack->name = name;
 	stack->head = NULL;
 	stack->tail = NULL;
 	stack->ops = NULL;
