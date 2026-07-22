@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 07:35:06 by emmmilla          #+#    #+#             */
-/*   Updated: 2026/07/17 14:45:43 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:27:06 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,12 @@ static void	pull_chunks(t_stack *a, t_stack *b)
 
 void	sort_chunk(t_stack *a, t_stack *b)
 {
-	push_chunks(a, b);
-	pull_chunks(a, b);
+	int	chunk;
+
+	chunk = int_sqrt(a->size) + 1;
+	while (a->size)
+	{
+		/* code */
+	}
+	
 }

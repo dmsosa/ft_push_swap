@@ -6,7 +6,7 @@
 /*   By: durisosa <durisosa@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 13:28:22 by durisosa          #+#    #+#             */
-/*   Updated: 2026/07/17 14:56:24 by durisosa         ###   ########.fr       */
+/*   Updated: 2026/07/22 20:13:19 by durisosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ void		ft_sort_five(t_stack *a, t_stack *b);
 void		ft_sort_three(t_stack *stack);
 void		ft_sort_strategy(t_stack **a, t_stack **b);
 void		ft_sort_units(t_stack *a, t_stack *b);
+void		ft_sort_chunk(t_stack *a, t_stack *b);
 
 //SORT UTILS
 void		rotate_to_top(t_stack *stack, t_node *top_node);

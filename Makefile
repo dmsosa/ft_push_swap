@@ -13,6 +13,8 @@ TEST_DIR = tests
 OBJS_DIR = obj
 
 CFILES = main.c \
+	core/durisosa/medium/ft_sort_chunk_utils.c \
+	core/durisosa/medium/ft_sort_chunk.c \
 	core/ft_sort.c \
 	core/ft_sort_utils.c \
 	core/ft_sort_units.c \
